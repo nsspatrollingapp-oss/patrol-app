@@ -3,6 +3,34 @@
   font-family: "Inter", Arial, sans-serif;
 }
 
+/* ===== CHECKLIST FIX ===== */
+
+.checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Override global label styling */
+.check-item label {
+  display: inline;
+  margin: 0;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.check-item input[type="checkbox"] {
+  margin: 0;
+}
+
+
 body {
   margin: 0;
   min-height: 100vh;
@@ -64,8 +92,6 @@ textarea:focus {
 /* Checklist layout */
 .checklist {
   display: flex;
-   flex-direction: column;
-  gap: 12px;
   gap: 30px;
   margin-top: 10px;
 }
