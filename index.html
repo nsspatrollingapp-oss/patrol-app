@@ -3,7 +3,6 @@
 <head>
   <title>Patrol Login</title>
   <link rel="stylesheet" href="css/style.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
@@ -11,42 +10,35 @@
 
 <input id="user" placeholder="Username">
 <input id="pass" type="password" placeholder="Password">
-<button type="button" onclick="login()">Login</button>
+<button onclick="login()">Login</button>
+
+<p id="msg"></p>
 
 <script>
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyfs9hiYIC50xxhLG6fmpe6ZLDrBPZr4G6sHTjzj57KOMeLhyLFYCzGi-PP0VqJgnnDdA/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzvLIpaYh7gdKE-vRoWhEL2t79CIzUX0di_AvJt4weIP56BEsKOJ1kUEhvwxGtRKIXiFg/exec";
 
 function login() {
-  const username = document.getElementById("user").value;
-  const password = document.getElementById("pass").value;
+  msg.innerText = "Checking...";
 
   fetch(SCRIPT_URL, {
     method: "POST",
     body: JSON.stringify({
-      action: "login",   // 🔑 IMPORTANT
-      username: username,
-      password: password
+      action: "login",
+      username: user.value,
+      password: pass.value
     })
   })
-  .then(res => res.json())
-  .then(data => {
-    if (data.status === "success") {
-      localStorage.setItem("user", username);
-      localStorage.setItem("pass", password);
-      window.location.href = "form.html";   // ✅ ONLY on success
+  .then(r => r.json())
+  .then(res => {
+    if (res.status === "success") {
+      localStorage.setItem("user", user.value);
+      localStorage.setItem("pass", pass.value);
+      location.href = "form.html";
     } else {
-      alert("Invalid username or password");
+      msg.innerText = "❌ Wrong username or password";
     }
   })
-  .catch(err => {
-    alert("Login error");
-    console.error(err);
-  });
-}
-
-// Service Worker
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("service-worker.js");
+  .catch(() => msg.innerText = "Server error");
 }
 </script>
 
