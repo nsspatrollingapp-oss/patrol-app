@@ -25,17 +25,20 @@
     </select>
 
     <!-- Checklist -->
-    <div class="checklist">
-  <label class="check-item">
-    <input type="checkbox" class="chk" value="Clean">
-    <span>Clean</span>
-  </label>
+    <label>Checklist</label>
 
-  <label class="check-item">
-    <input type="checkbox" class="chk" value="Secure">
-    <span>Secure</span>
-  </label>
-   </div>
+<div class="checklist">
+  <div class="check-item">
+    <input type="checkbox" class="chk" id="clean" value="Clean">
+    <label for="clean">Clean</label>
+  </div>
+
+  <div class="check-item">
+    <input type="checkbox" class="chk" id="secure" value="Secure">
+    <label for="secure">Secure</label>
+  </div>
+</div>
+
 
     <!-- Remarks -->
     <label>Remarks</label>
@@ -60,6 +63,7 @@
   <script src="js/app.js"></script>
 </body>
 </html>
+
 
 
 
