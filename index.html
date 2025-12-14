@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Patrol Login</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<h2>Supervisor Login</h2>
+
+<input id="user" placeholder="Username">
+<input id="pass" type="password" placeholder="Password">
+<button onclick="login()">Login</button>
+
+<script>
+function login() {
+  localStorage.setItem("user", user.value);
+  localStorage.setItem("pass", pass.value);
+  location.href = "form.html";
+}
+
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js");
+}
+</script>
+
+</body>
+</html>
