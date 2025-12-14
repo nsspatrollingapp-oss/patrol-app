@@ -1,4 +1,4 @@
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwPCTQWKa5NayMRvPJnlcxv7ZnscfpLL_qTysis_zYKFqlbAWEB7KKHx9ulQqZeser99w/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyfs9hiYIC50xxhLG6fmpe6ZLDrBPZr4G6sHTjzj57KOMeLhyLFYCzGi-PP0VqJgnnDdA/exec";
 
 let lat = "", lng = "";
 
