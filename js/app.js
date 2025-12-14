@@ -36,6 +36,7 @@ function toBase64(file) {
 
 async function submitVisit() {
   const photosInput = document.getElementById("photos").files;
+
   if (photosInput.length > 5) {
     alert("Maximum 5 photos");
     return;
@@ -49,20 +50,36 @@ async function submitVisit() {
   const data = {
     username: localStorage.getItem("user"),
     password: localStorage.getItem("pass"),
-    location: location.value,
-    checklist: [...document.querySelectorAll(".chk:checked")].map(c => c.value),
-    remarks: remarks.value,
-    lat, lng,
+
+    location: document.getElementById("location").value,
+    checklist: [...document.querySelectorAll(".chk:checked")]
+                .map(c => c.value)
+                .join(", "), // 🔑 STRING
+
+    remarks: document.getElementById("remarks").value,
+
+    lat,
+    lng,
+
     photos,
     signature: canvas.toDataURL(),
-    syncStatus: navigator.onLine ? "ONLINE" : "OFFLINE"
+
+    syncStatus: navigator.onLine ? "ONLINE" : "OFFLINE",
+    device: "Web",
+    appVersion: "v1.0"
   };
 
   fetch(SCRIPT_URL, {
     method: "POST",
-    body: JSON.stringify(data)
+    body: JSON.stringify(data) // ⚠️ NO headers
   })
   .then(r => r.json())
-  .then(() => status.innerText = "Submitted Successfully")
-  .catch(() => status.innerText = "Saved (will sync)");
+  .then(res => {
+    document.getElementById("status").innerText = res.status === "success"
+      ? "Submitted Successfully"
+      : res.message;
+  })
+  .catch(() => {
+    document.getElementById("status").innerText = "Saved (will sync)";
+  });
 }
