@@ -1,3 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Patrol Login</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<h2>Supervisor Login</h2>
+
+<input id="user" placeholder="Username">
+<input id="pass" type="password" placeholder="Password">
+<button onclick="login()">Login</button>
+
 <script>
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwPCTQWKa5NayMRvPJnlcxv7ZnscfpLL_qTysis_zYKFqlbAWEB7KKHx9ulQqZeser99w/exec";
 
@@ -27,12 +41,11 @@ function login() {
     console.error(err);
   });
 }
-
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("service-worker.js");
-}
 </script>
+
 
 </body>
 </html>
+
+
 
