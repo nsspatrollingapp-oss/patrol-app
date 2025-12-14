@@ -61,16 +61,23 @@ textarea:focus {
   box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
 }
 
-/* Fix checkbox alignment */
-.checklist label {
+/* Checklist layout */
+.checklist {
+  display: flex;
+  gap: 30px;
+  margin-top: 10px;
+}
+
+.check-item {
   display: flex;
   align-items: center;
   gap: 8px;
+  font-size: 15px;
   font-weight: 500;
   cursor: pointer;
 }
 
-.checklist input[type="checkbox"] {
+.check-item input[type="checkbox"] {
   margin: 0;
 }
 
