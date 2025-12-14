@@ -1,4 +1,32 @@
-* {
+*
+/* ===== CHECKLIST FIX ===== */
+
+.checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Override global label styling */
+.check-item label {
+  display: inline;
+  margin: 0;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.check-item input[type="checkbox"] {
+  margin: 0;
+}
+
+{
   box-sizing: border-box;
   font-family: "Inter", Arial, sans-serif;
 }
