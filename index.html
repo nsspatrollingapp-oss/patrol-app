@@ -1,24 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Patrol Login</title>
+
+  <!-- Modern font (optional but recommended) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Your CSS -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<h2>Supervisor Login</h2>
+  <div class="form-container">
+    <h2>Supervisor Login</h2>
 
-<input id="user" placeholder="Username">
-<input id="pass" type="password" placeholder="Password">
-<button onclick="login()">Login</button>
+    <input id="user" type="text" placeholder="Username">
+    <input id="pass" type="password" placeholder="Password">
 
-<p id="msg"></p>
+    <button onclick="login()">Login</button>
+
+    <p id="msg" class="message"></p>
+  </div>
 
 <script>
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzvLIpaYh7gdKE-vRoWhEL2t79CIzUX0di_AvJt4weIP56BEsKOJ1kUEhvwxGtRKIXiFg/exec";
 
 function login() {
   msg.innerText = "Checking...";
+  msg.className = "message";
 
   fetch(SCRIPT_URL, {
     method: "POST",
@@ -36,9 +46,13 @@ function login() {
       location.href = "form.html";
     } else {
       msg.innerText = "❌ Wrong username or password";
+      msg.classList.add("error");
     }
   })
-  .catch(() => msg.innerText = "Server error");
+  .catch(() => {
+    msg.innerText = "⚠️ Server error";
+    msg.classList.add("error");
+  });
 }
 </script>
 
