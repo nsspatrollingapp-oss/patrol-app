@@ -1,26 +1,28 @@
 *
-/* ===== CHECKLIST FIX ===== */
+/* ===== CHECKLIST FINAL FIX ===== */
 
 .checklist {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
   margin-top: 10px;
 }
 
-.check-item {
+.check-row {
   display: flex;
+  justify-content: space-between; /* TEXT LEFT, BOX RIGHT */
   align-items: center;
-  gap: 10px;
+  padding: 10px 0;
 }
 
-/* Override global label styling */
-.check-item label {
-  display: inline;
-  margin: 0;
+.check-text {
+  font-size: 15px;
   font-weight: 500;
-  cursor: pointer;
+  color: #1f2937;
 }
+
+.check-row input[type="checkbox"] {
+  margin: 0;
+  transform: scale(1.1);
+}
+
 
 .check-item input[type="checkbox"] {
   margin: 0;
@@ -29,33 +31,6 @@
 {
   box-sizing: border-box;
   font-family: "Inter", Arial, sans-serif;
-}
-
-/* ===== CHECKLIST FIX ===== */
-
-.checklist {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 10px;
-}
-
-.check-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-/* Override global label styling */
-.check-item label {
-  display: inline;
-  margin: 0;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-.check-item input[type="checkbox"] {
-  margin: 0;
 }
 
 
