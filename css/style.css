@@ -1,28 +1,4 @@
 *
-/* ===== CHECKLIST FINAL FIX ===== */
-
-.checklist {
-  margin-top: 10px;
-}
-
-.check-row {
-  display: flex;
-  justify-content: space-between; /* TEXT LEFT, BOX RIGHT */
-  align-items: center;
-  padding: 10px 0;
-}
-
-.check-text {
-  font-size: 15px;
-  font-weight: 500;
-  color: #1f2937;
-}
-
-.check-row input[type="checkbox"] {
-  margin: 0;
-  transform: scale(1.1);
-}
-
 
 .check-item input[type="checkbox"] {
   margin: 0;
@@ -149,4 +125,28 @@ button.secondary {
   margin-top: 15px;
   text-align: center;
   font-size: 14px;
+}
+/* ===== ABSOLUTE CHECKLIST FIX ===== */
+
+.checklist {
+  margin-top: 10px;
+}
+
+.check-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.check-row span {
+  font-size: 15px;
+  font-weight: 500;
+  color: #1f2937;
+}
+
+.check-row input[type="checkbox"] {
+  margin: 0;
+  transform: scale(1.2);
 }
