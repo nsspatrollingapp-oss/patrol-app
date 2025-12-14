@@ -13,39 +13,16 @@
 <button onclick="login()">Login</button>
 
 <script>
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwPCTQWKa5NayMRvPJnlcxv7ZnscfpLL_qTysis_zYKFqlbAWEB7KKHx9ulQqZeser99w/exec";
-
 function login() {
-  const username = document.getElementById("user").value;
-  const password = document.getElementById("pass").value;
+  localStorage.setItem("user", user.value);
+  localStorage.setItem("pass", pass.value);
+  location.href = "form.html";
+}
 
-  fetch(SCRIPT_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      username: username,
-      password: password
-    })
-  })
-  .then(res => res.json())
-  .then(data => {
-    if (data.status === "success") {
-      localStorage.setItem("user", username);
-      location.href = "form.html";
-    } else {
-      alert("Invalid username or password");
-    }
-  })
-  .catch(err => {
-    alert("Login error");
-    console.error(err);
-  });
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js");
 }
 </script>
 
-
 </body>
 </html>
-
-
-
