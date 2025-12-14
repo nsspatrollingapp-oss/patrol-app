@@ -64,6 +64,8 @@ textarea:focus {
 /* Checklist layout */
 .checklist {
   display: flex;
+   flex-direction: column;
+  gap: 12px;
   gap: 30px;
   margin-top: 10px;
 }
