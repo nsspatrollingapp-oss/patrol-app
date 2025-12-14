@@ -1,34 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Patrol Visit</title>
+
+  <!-- Modern font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Your CSS -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<h3>Patrol Visit</h3>
+  <div class="form-container">
+    <h2>Patrol Visit</h2>
 
-<select id="location">
-  <option value="">Select Location</option>
-  <option>Gate A</option>
-  <option>Gate B</option>
-  <option>Warehouse</option>
-</select>
+    <!-- Location -->
+    <label>Location</label>
+    <select id="location">
+      <option value="">Select Location</option>
+      <option>Gate A</option>
+      <option>Gate B</option>
+      <option>Warehouse</option>
+    </select>
 
-<label><input type="checkbox" class="chk" value="Clean"> Clean</label>
-<label><input type="checkbox" class="chk" value="Secure"> Secure</label>
+    <!-- Checklist -->
+    <label class="section-label">Checklist</label>
+    <div class="checkbox-group">
+      <label class="checkbox">
+        <input type="checkbox" class="chk" value="Clean">
+        <span>Clean</span>
+      </label>
 
-<textarea id="remarks" placeholder="Remarks"></textarea>
+      <label class="checkbox">
+        <input type="checkbox" class="chk" value="Secure">
+        <span>Secure</span>
+      </label>
+    </div>
 
-<input type="file" id="photos" accept="image/*" capture="environment" multiple>
+    <!-- Remarks -->
+    <label>Remarks</label>
+    <textarea id="remarks" placeholder="Enter remarks..."></textarea>
 
-<h4>Signature</h4>
-<canvas id="sign" width="300" height="150"></canvas>
-<button onclick="clearSign()">Clear</button>
+    <!-- Photos -->
+    <label>Upload Photos</label>
+    <input type="file" id="photos" accept="image/*" capture="environment" multiple>
 
-<button onclick="submitVisit()">Submit</button>
-<p id="status"></p>
+    <!-- Signature -->
+    <label class="section-label">Signature</label>
+    <canvas id="sign" width="300" height="150"></canvas>
+    <button type="button" class="secondary" onclick="clearSign()">Clear Signature</button>
 
-<script src="js/app.js"></script>
+    <!-- Submit -->
+    <button onclick="submitVisit()">Submit Visit</button>
+
+    <p id="status" class="message"></p>
+  </div>
+
+  <script src="js/app.js"></script>
 </body>
 </html>
