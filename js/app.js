@@ -1,14 +1,14 @@
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyfs9hiYIC50xxhLG6fmpe6ZLDrBPZr4G6sHTjzj57KOMeLhyLFYCzGi-PP0VqJgnnDdA/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzvLIpaYh7gdKE-vRoWhEL2t79CIzUX0di_AvJt4weIP56BEsKOJ1kUEhvwxGtRKIXiFg/exec";
 
 let lat = "", lng = "";
 
-// GPS
+/* GPS */
 navigator.geolocation.getCurrentPosition(p => {
   lat = p.coords.latitude;
   lng = p.coords.longitude;
 });
 
-// SIGNATURE
+/* SIGNATURE */
 const canvas = document.getElementById("sign");
 const ctx = canvas.getContext("2d");
 let draw = false;
@@ -25,7 +25,7 @@ function clearSign() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-// IMAGE → BASE64
+/* FILE → BASE64 */
 function toBase64(file) {
   return new Promise(res => {
     const r = new FileReader();
@@ -35,51 +35,39 @@ function toBase64(file) {
 }
 
 async function submitVisit() {
-  const photosInput = document.getElementById("photos").files;
+  status.innerText = "Submitting...";
 
-  if (photosInput.length > 5) {
-    alert("Maximum 5 photos");
+  const files = photos.files;
+  if (files.length > 5) {
+    alert("Max 5 photos");
     return;
   }
 
-  const photos = [];
-  for (let f of photosInput) {
-    photos.push(await toBase64(f));
-  }
-
-  const data = {
-    username: localStorage.getItem("user"),
-    password: localStorage.getItem("pass"),
-
-    location: document.getElementById("location").value,
-    checklist: [...document.querySelectorAll(".chk:checked")]
-                .map(c => c.value)
-                .join(", "), // 🔑 STRING
-
-    remarks: document.getElementById("remarks").value,
-
-    lat,
-    lng,
-
-    photos,
-    signature: canvas.toDataURL(),
-
-    syncStatus: navigator.onLine ? "ONLINE" : "OFFLINE",
-    device: "Web",
-    appVersion: "v1.0"
-  };
+  const photos64 = [];
+  for (let f of files) photos64.push(await toBase64(f));
 
   fetch(SCRIPT_URL, {
     method: "POST",
-    body: JSON.stringify(data) // ⚠️ NO headers
+    body: JSON.stringify({
+      action: "submit",
+      username: localStorage.getItem("user"),
+      password: localStorage.getItem("pass"),
+      location: location.value,
+      checklist: [...document.querySelectorAll(".chk:checked")].map(c => c.value),
+      remarks: remarks.value,
+      lat, lng,
+      photos: photos64,
+      signature: canvas.toDataURL(),
+      syncStatus: navigator.onLine ? "ONLINE" : "OFFLINE"
+    })
   })
   .then(r => r.json())
   .then(res => {
-    document.getElementById("status").innerText = res.status === "success"
-      ? "Submitted Successfully"
-      : res.message;
+    if (res.status === "success") {
+      status.innerText = "✅ Submitted successfully";
+    } else {
+      status.innerText = "❌ Submit failed";
+    }
   })
-  .catch(() => {
-    document.getElementById("status").innerText = "Saved (will sync)";
-  });
+  .catch(() => status.innerText = "❌ Network error");
 }
