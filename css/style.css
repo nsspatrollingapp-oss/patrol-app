@@ -1,117 +1,34 @@
-/* Global styles */
 * {
   box-sizing: border-box;
-  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  font-family: "Inter", Arial, sans-serif;
 }
 
 body {
-  background: linear-gradient(135deg, #f5f7fa, #e4ebf5);
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa, #e4ebf5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Form container */
+/* Card */
 .form-container {
-  background: #ffffff;
+  background: #fff;
   width: 100%;
-  max-width: 420px;
+  max-width: 480px;
   padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-/* Headings */
-.form-container h1,
-.form-container h2 {
+h2 {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   color: #1f2937;
 }
 
-/* Inputs */
-input,
-select,
-textarea {
-  width: 100%;
-  padding: 12px 14px;
-  margin: 10px 0;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  font-size: 15px;
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-
-input:focus,
-select:focus,
-textarea:focus {
-  outline: none;
-  border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
-}
-
-/* Buttons */
-button {
-  width: 100%;
-  padding: 12px;
-  margin-top: 15px;
-  background: linear-gradient(135deg, #2563eb, #1e40af);
-  color: #ffffff;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
-}
-
-button:active {
-  transform: translateY(0);
-  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
-}
-
-/* Links (for login / forgot password) */
-a {
-  display: block;
-  text-align: center;
-  margin-top: 15px;
-  color: #2563eb;
-  text-decoration: none;
-  font-size: 14px;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* Error / success messages */
-.message {
-  padding: 10px;
-  margin-bottom: 15px;
-  border-radius: 6px;
-  font-size: 14px;
-}
-
-.message.error {
-  background: #fee2e2;
-  color: #991b1b;
-}
-
-.message.success {
-  background: #dcfce7;
-  color: #166534;
-}
-
-/*new*/
-
-/* Section labels */
+/* Labels */
 label {
   display: block;
   margin-top: 15px;
@@ -119,47 +36,78 @@ label {
   color: #374151;
 }
 
-.section-label {
-  margin-top: 20px;
+/* Inputs */
+input,
+select,
+textarea {
+  width: 100%;
+  margin-top: 8px;
+  padding: 12px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
 }
 
-/* Checkbox group */
-.checkbox-group {
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+}
+
+/* Checklist */
+.checklist {
   display: flex;
   gap: 20px;
   margin-top: 10px;
 }
 
-.checkbox {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-}
-
-.checkbox input {
+.checklist input {
   width: auto;
-  transform: scale(1.1);
+  margin-right: 6px;
 }
 
-/* Canvas */
+/* Signature */
 canvas {
   width: 100%;
-  max-width: 100%;
   height: 150px;
-  border: 2px dashed #d1d5db;
+  border: 2px dashed #c7c7c7;
   border-radius: 8px;
   margin-top: 10px;
 }
 
-/* Secondary button */
+/* Buttons */
+button {
+  width: 100%;
+  margin-top: 15px;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  box-shadow: 0 8px 20px rgba(37,99,235,0.3);
+}
+
 button.secondary {
   background: #e5e7eb;
   color: #111827;
-  margin-top: 10px;
 }
 
-button.secondary:hover {
-  background: #d1d5db;
+/* Messages */
+.message {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 14px;
 }
-
