@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Patrol Login</title>
-  <link rel="stylesheet" href="css/style.css">
+  <title>Supervisor Login</title>
 </head>
 <body>
 
@@ -10,34 +9,40 @@
 
 <input id="user" placeholder="Username">
 <input id="pass" type="password" placeholder="Password">
-<button onclick="login()">Login</button>
+
+<button id="loginBtn">Login</button>
+
+<p id="msg" style="color:red;"></p>
 
 <script>
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyfs9hiYIC50xxhLG6fmpe6ZLDrBPZr4G6sHTjzj57KOMeLhyLFYCzGi-PP0VqJgnnDdA/exec";
 
+document.getElementById("loginBtn").addEventListener("click", login);
+
 function login() {
-  const username = document.getElementById("user").value;
-  const password = document.getElementById("pass").value;
+  const username = document.getElementById("user").value.trim();
+  const password = document.getElementById("pass").value.trim();
+  const msg = document.getElementById("msg");
+
+  msg.innerText = "";
 
   fetch(SCRIPT_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      username: username,
-      password: password
-    })
+    body: JSON.stringify({ username, password })
   })
   .then(res => res.json())
   .then(data => {
     if (data.status === "success") {
-      localStorage.setItem("user", username);
-      location.href = "form.html";
+      sessionStorage.setItem("loggedIn", "true");
+      sessionStorage.setItem("user", username);
+      window.location.href = "form.html";
     } else {
-      alert("Invalid username or password");
+      msg.innerText = "Invalid username or password";
     }
   })
   .catch(err => {
-    alert("Login error");
+    msg.innerText = "Server error";
     console.error(err);
   });
 
@@ -49,6 +54,7 @@ if ("serviceWorker" in navigator) {
 </script>
 </body>
 </html>
+
 
 
 
