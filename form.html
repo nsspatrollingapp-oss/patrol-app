@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <title>Patrol Visit</title>
 
-  <!-- Modern font -->
+  <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- Your CSS -->
+  <!-- CSS -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -25,30 +25,30 @@
     </select>
 
     <!-- Checklist -->
-    <label class="section-label">Checklist</label>
-    <div class="checkbox-group">
-      <label class="checkbox">
+    <label>Checklist</label>
+    <div class="checklist">
+      <label>
         <input type="checkbox" class="chk" value="Clean">
-        <span>Clean</span>
+        Clean
       </label>
-
-      <label class="checkbox">
+      <label>
         <input type="checkbox" class="chk" value="Secure">
-        <span>Secure</span>
+        Secure
       </label>
     </div>
 
     <!-- Remarks -->
     <label>Remarks</label>
-    <textarea id="remarks" placeholder="Enter remarks..."></textarea>
+    <textarea id="remarks" placeholder="Enter remarks"></textarea>
 
     <!-- Photos -->
     <label>Upload Photos</label>
     <input type="file" id="photos" accept="image/*" capture="environment" multiple>
 
     <!-- Signature -->
-    <label class="section-label">Signature</label>
+    <label>Signature</label>
     <canvas id="sign" width="300" height="150"></canvas>
+
     <button type="button" class="secondary" onclick="clearSign()">Clear Signature</button>
 
     <!-- Submit -->
